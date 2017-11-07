@@ -117,7 +117,7 @@ func store(data: Data?, toPath path: String) {
 func getPosts(user: CurrentUser, completion: @escaping ([Post]?) -> Void) {
     let dbRef = Database.database().reference()
     var postArray: [Post] = []
-    dbRef.child("Posts").observeSingleEvent(of: .value, with: { snapshot -> Void in
+    dbRef.child(firPostsNode).observeSingleEvent(of: .value, with: { snapshot -> Void in
         if snapshot.exists() {
             if let posts = snapshot.value as? [String:AnyObject] {
                 user.getReadPostIDs(completion: { (ids) in

@@ -47,12 +47,13 @@ class CurrentUser {
                 for (_, data) in value {
                     postArray.append(data as! String)
                 }
+                completion(postArray)
+
             }
             
         }) { (error) in
             print(error.localizedDescription)
         }
-        completion(postArray)
 
     
     }
